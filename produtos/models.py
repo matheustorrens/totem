@@ -1,10 +1,22 @@
 from django.db import models
 
+from datetime import datetime
+
 class Produto(models.Model):
-     nome = models.CharField(max_length=100, null=False, blank=False)
-     legenda = models.CharField(max_length=100, null=False, blank=False)
+
+     OPCOES_CATEGORIA = [
+          ("SALGADOS", "Salgados"),
+          ("DOCES", "Doces"),
+          ("BEBIDAS", "Bebidas"),
+     ]
+
+     nome = models.CharField(max_length=100, null=False, blank=False)                        # O Método CharField entende apenas tuplas, como no caso das 
+     legenda = models.CharField(max_length=100, null=False, blank=False)                     # OPCOES_CATEGORIAS, sendo obrigatório o seu uso, por isso o: 
+     categoria = models.CharField(max_length=100, choices=OPCOES_CATEGORIA, default='')      # ("SALGADOS", "Salgado") por exemplo.
      descricao = models.TextField(null=False, blank=False)
      item = models.CharField(max_length=100, null=False, blank=False)
+     exibir = models.BooleanField(default=False)
+     # data_produto = models.DateTimeField(default=datetime.now, blank=False)                # Define a data do produto (caso queira adicionar, lembre-se de fazer as migrações (makemigratios e migrate))
 
      def __str__(self):
           return f"Produto [nome={self.nome}]"
