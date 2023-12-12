@@ -29,7 +29,7 @@ def buscar(request):
         if nome_a_buscar:
             produtos = produtos.filter(nome__icontains=nome_a_buscar)
 
-    return render(request, "produtos/buscar.html", {"cards": produtos})
+    return render(request, "produtos/index.html", {"cards": produtos})
 
 def adicionar_produto(request):
     if not request.user.is_superuser:
@@ -61,8 +61,14 @@ def editar_produto(request, item_id):
     return render(request, 'produtos/editar_produto.html', {'form': form, 'produto_id': item_id})
 
 def excluir_produto(request, item_id):
+
     produto = Produto.objects.get(id=item_id)
     produto.delete()
     messages.success(request, 'Produto excluido.')
 
     return redirect('index')
+
+def filtro_categorias(request, categoria):
+    produtos = Produto.objects.filter(exibir=True, categoria=categoria)
+
+    return render(request, 'produtos/index.html', {"cards": produtos})
