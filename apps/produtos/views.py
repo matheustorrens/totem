@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
     
 from apps.produtos.models import Produto
+from apps.produtos.forms import ProdutoForms
 
 from django.contrib import messages
 
@@ -30,3 +31,22 @@ def buscar(request):
 
     return render(request, "produtos/buscar.html", {"cards": produtos})
 
+def adicionar_produto(request):
+    if not request.user.is_superuser:
+        messages.error(request, "Apenas administradores podem acessar esa opção.")
+        return redirect('login')
+
+    form = ProdutoForms
+    if request.method == 'POST':
+        form = ProdutoForms(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Produto adicionado com sucesso.')
+
+    return render(request, 'produtos/adicionar_produto.html', {'form': form})
+
+def editar_produto(request):
+    pass
+
+def excluir_produto(request):
+    pass
