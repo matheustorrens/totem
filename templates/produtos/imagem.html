@@ -16,8 +16,8 @@
                                 <p class="imagem__texto">{{ produto.descricao }}</p>
                             </div>
                             <div>
-                                <a href="{% url 'editar_produto' %}"><button class="btn btn-success col-12" style="padding: top 5px;" type="submit">Editar</button></a>
-                                <a href="{% url 'excluir_produto' %}"><button class="btn btn-danger col-12" style="padding: top 5px;" type="submit">Deletar</button></a>
+                                <a href="{% url 'editar_produto' produto.id %}"><button class="btn btn-success col-12" style="padding: top 5px;" type="submit">Editar</button></a>
+                                <a href="{% url 'excluir_produto' produto.id %}"><button class="btn btn-danger col-12" style="padding: top 5px;" type="submit">Deletar</button></a>
                             </div>
                         </div>
                     </div>

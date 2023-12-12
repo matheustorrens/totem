@@ -41,12 +41,28 @@ def adicionar_produto(request):
         form = ProdutoForms(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Produto adicionado com sucesso.')
+            messages.success(request, 'Produto adicionado.')
 
     return render(request, 'produtos/adicionar_produto.html', {'form': form})
 
-def editar_produto(request):
-    pass
+def editar_produto(request, item_id):
+    produtos = Produto.objects.get(id=item_id) # Instancia o models de Produto que é a instancia do banco de dados e captura suas informações
+    form = ProdutoForms(instance=produtos)
 
-def excluir_produto(request):
-    pass
+    if request.method == 'POST':
+        form = ProdutoForms(request.POST, request.FILES, instance=produtos)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Produto editado.')
+            return redirect('index')
+
+
+    return render(request, 'produtos/editar_produto.html', {'form': form, 'produto_id': item_id})
+
+def excluir_produto(request, item_id):
+    produto = Produto.objects.get(id=item_id)
+    produto.delete()
+    messages.success(request, 'Produto excluido.')
+
+    return redirect('index')
