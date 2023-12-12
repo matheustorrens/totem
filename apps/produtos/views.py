@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
     
-from produtos.models import Produto
+from apps.produtos.models import Produto
 
 from django.contrib import messages
 

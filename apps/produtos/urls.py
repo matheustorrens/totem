@@ -1,5 +1,5 @@
 from django.urls import path
-from produtos.views import index, imagem, buscar
+from apps.produtos.views import index, imagem, buscar
 
 urlpatterns = [
     path('', index, name='index'),

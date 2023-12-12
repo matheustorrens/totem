@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from produtos.models import Produto
+from apps.produtos.models import Produto
 
 class ListandoProdutos(admin.ModelAdmin):                       # Classe que vai definir as funcionalidades do Django Admin
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from usuarios.forms import LoginForms, CadastroForms
+from apps.usuarios.forms import LoginForms, CadastroForms
 
 from django.contrib.auth.models import User
 
@@ -24,7 +24,7 @@ def login(request):
 
         if usuario is not None:
             auth.login(request, usuario)
-            messages.success(request, f"{nome} logado com sucesso.")
+            messages.success(request, f"{nome} fez login com sucesso.")
             return redirect('index')
         else:
             messages.error(request, "Não foi possível efetuar o login, tente novamente.")
