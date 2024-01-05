@@ -13,18 +13,20 @@ def login(request):
         form = LoginForms(request.POST)
 
         if form.is_valid():
-            nome = form['nome_login'].value()
+            email = form['email_login'].value()
             senha = form['senha'].value()
 
         usuario = auth.authenticate(
             request,
-            username=nome,
+            email=email,
             password=senha
         )
 
+        print(usuario)
+
         if usuario is not None:
             auth.login(request, usuario)
-            messages.success(request, f"{nome} fez login com sucesso.")
+            messages.success(request, "Logado com sucesso.")
             return redirect('index')
         else:
             messages.error(request, "Não foi possível efetuar o login, tente novamente.")
@@ -41,7 +43,7 @@ def cadastro(request):
         if form.is_valid():
             
             nome = form["nome_cadastro"].value()
-            email = form["email"].value()
+            email_cadastro = form["email_cadastro"].value()
             senha = form["senha_1"].value()
 
             if User.objects.filter(username=nome).exists():
@@ -50,7 +52,7 @@ def cadastro(request):
             
             usuario = User.objects.create_user(
                 username=nome,
-                email=email,
+                email=email_cadastro,
                 password=senha
             )
             usuario.save()

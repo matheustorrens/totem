@@ -1,14 +1,14 @@
 from django import forms
 
 class LoginForms(forms.Form):
-    nome_login = forms.CharField(
-        label="Nome de Login",
-        max_length=100,
+    email_login = forms.EmailField(
+        label="Email",
+        max_length=200,
         required=True,
-        widget=forms.TextInput(
+        widget=forms.EmailInput(
             attrs={
                 "class": "form-control",
-                "placeholder": "Ex: Andre Luiz"
+                "placeholder": "Ex: etec@gmail.com"
             }
         )
     )
@@ -39,7 +39,7 @@ class CadastroForms(forms.Form):
         
     )
 
-    email = forms.EmailField(
+    email_cadastro = forms.EmailField(
         label="Email",
         max_length=200,
         required=True,
