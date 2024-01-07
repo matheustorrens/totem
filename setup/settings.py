@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # Apps adicionadas
     'apps.produtos.apps.ProdutosConfig',
     'apps.usuarios.apps.UsuariosConfig',
+    'apps.cart.apps.CartConfig',
 
     'allauth',
     'allauth.account',

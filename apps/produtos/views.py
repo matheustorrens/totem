@@ -69,6 +69,7 @@ def excluir_produto(request, item_id):
     return redirect('index')
 
 def filtro_categorias(request, categoria):
+
     produtos = Produto.objects.filter(exibir=True, categoria=categoria)
 
     return render(request, 'produtos/index.html', {"cards": produtos})

@@ -16,8 +16,10 @@
                                 <p class="imagem__texto">{{ produto.descricao }}</p>
                             </div>
                             <div>
+                                {% if request.user.is_superuser %}
                                 <a href="{% url 'editar_produto' produto.id %}"><button class="btn btn-success col-12" style="padding: top 5px;" type="submit">Editar</button></a>
                                 <a href="{% url 'excluir_produto' produto.id %}"><button class="btn btn-danger col-12" style="padding: top 5px;" type="submit">Deletar</button></a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

@@ -8,5 +8,6 @@ urlpatterns = [
     path('adicionar-produto', adicionar_produto, name='adicionar_produto'),
     path('editar-produto/<int:item_id>', editar_produto, name='editar_produto'),
     path('excluir-produto/<int:item_id>', excluir_produto, name='excluir_produto'),                  
-    path('filtro-categorias/<str:categoria>', filtro_categorias, name='filtro_categorias'),                                 
+    path('filtro-categorias/<str:categoria>', filtro_categorias, name='filtro_categorias'),
+                           
 ]
