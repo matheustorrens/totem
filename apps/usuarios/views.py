@@ -12,9 +12,12 @@ def login(request):
     if request.method == 'POST':
         form = LoginForms(request.POST)
 
+        print("form", form)
+
         if form.is_valid():
             email = form['email_login'].value()
             senha = form['senha'].value()
+
 
         usuario = auth.authenticate(
             request,
@@ -22,7 +25,8 @@ def login(request):
             password=senha
         )
 
-        print(usuario)
+        print("User:", usuario)
+
 
         if usuario is not None:
             auth.login(request, usuario)
@@ -43,7 +47,7 @@ def cadastro(request):
         if form.is_valid():
             
             nome = form["nome_cadastro"].value()
-            email_cadastro = form["email_cadastro"].value()
+            email = form["email_cadastro"].value()
             senha = form["senha_1"].value()
 
             if User.objects.filter(username=nome).exists():
@@ -52,7 +56,7 @@ def cadastro(request):
             
             usuario = User.objects.create_user(
                 username=nome,
-                email=email_cadastro,
+                email=email,
                 password=senha
             )
             usuario.save()

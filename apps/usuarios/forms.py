@@ -46,7 +46,7 @@ class CadastroForms(forms.Form):
         widget=forms.EmailInput(
             attrs={
                 "class": "form-control",
-                "placeholder": "Ex: seuemail@gmail.com"
+                "placeholder": "Ex: etec@gmail.com"
             }
         )
 

@@ -153,6 +153,8 @@ AUTHENTICATION_BACKENDS = (
 
 'allauth.account.auth_backends.AuthenticationBackend',
 
+'apps.usuarios.backends.EmailOrUsernameBackend',
+
 )
 
 SITE_ID = 1
