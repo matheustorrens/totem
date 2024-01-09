@@ -4,7 +4,7 @@ from apps.produtos.models import Produto
 
 class ListandoProdutos(admin.ModelAdmin):                       # Classe que vai definir as funcionalidades do Django Admin
 
-    list_display = ("id", "nome", "legenda", "exibir")          # Define o que vai ser mostrado na lista dos produtos
+    list_display = ("id", "nome", "preco", "legenda", "exibir")          # Define o que vai ser mostrado na lista dos produtos
     list_display_links = ("id", "nome")                         # Define os campos que serão links
     search_fields = ("nome",)                                   # Função que busca pelo nome dos produtos
     list_filter = ("categoria","usuario")                       # Função que define uma lista que contem todas as categorias para filtra-las

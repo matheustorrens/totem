@@ -14,12 +14,15 @@
                                 <p class="imagem__titulo">{{ produto.nome }}</p>
                                 <p class="imagem__descricao">{{ produto.legenda }}</p>
                                 <p class="imagem__texto">{{ produto.descricao }}</p>
+                                <p class="imagem__texto">R$ {{ produto.preco }}</p>
                             </div>
                             <div>
                                 {% if request.user.is_superuser %}
-                                <a href="{% url 'editar_produto' produto.id %}"><button class="btn btn-success col-12" style="padding: top 5px;" type="submit">Editar</button></a>
-                                <a href="{% url 'excluir_produto' produto.id %}"><button class="btn btn-danger col-12" style="padding: top 5px;" type="submit">Deletar</button></a>
+                                <a href="{% url 'editar_produto' produto.id %}"><button class="btn btn-success col-12" style="padding: top 5px; margin-top: 10px" type="submit">Editar</button></a>
+                                <a href="{% url 'excluir_produto' produto.id %}"><button class="btn btn-danger col-12" style="padding: top 5px; margin-top: 10px" type="submit">Deletar</button></a>
                                 {% endif %}
+
+                                <a href="{% url 'excluir_produto' produto.id %}"><button class="btn btn-success col-12" style="padding: top 5px; margin-top: 10px" type="submit">Adicionar ao Carrinho</button></a>
                             </div>
                         </div>
                     </div>

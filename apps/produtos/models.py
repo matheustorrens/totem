@@ -12,7 +12,8 @@ class Produto(models.Model):
           ("BEBIDAS", "Bebidas"),
      ]
 
-     nome = models.CharField(max_length=100, null=False, blank=False)                        # O Método CharField entende apenas tuplas, como no caso das 
+     nome = models.CharField(max_length=100, null=False, blank=False)
+     preco = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)               # O Método CharField entende apenas tuplas, como no caso das 
      legenda = models.CharField(max_length=100, null=False, blank=False)                     # OPCOES_CATEGORIAS, sendo obrigatório o seu uso, por isso o: 
      categoria = models.CharField(max_length=100, choices=OPCOES_CATEGORIA, default='')      # ("SALGADOS", "Salgado") por exemplo.
      descricao = models.TextField(null=False, blank=False)
