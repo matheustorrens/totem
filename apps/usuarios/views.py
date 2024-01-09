@@ -12,7 +12,7 @@ def login(request):
     if request.method == 'POST':
         form = LoginForms(request.POST)
 
-        print("form", form)
+        # print("form", form)
 
         if form.is_valid():
             email = form['email_login'].value()
@@ -25,8 +25,7 @@ def login(request):
             password=senha
         )
 
-        print("User:", usuario)
-
+        # print("User:", usuario)
 
         if usuario is not None:
             auth.login(request, usuario)

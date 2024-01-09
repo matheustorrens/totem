@@ -2,6 +2,7 @@
 <div class="pagina-inicial">
     <header class="cabecalho">
         <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Logo da Alura Space" />
+        <!-- <h2 class="btn btn-success" style="color: white;" >Index</h2> -->
         {% include 'partials/_alertas.html' %}
         <div class="cabecalho__busca">
             <div class="busca__fundo">
@@ -24,6 +25,7 @@
                 {% if request.user.is_authenticated and request.user.is_superuser %}
                     <a href="{% url 'adicionar_produto' %}"><img src="{% static '/assets/ícones/1x/botao-adicionar.png' %}"> Adicionar Produto</a>
                 {% endif %}
+                <a href="{% url 'cart' %}"><img src="{% static '/assets/ícones/1x/shopping-cart.png' %}"> Carrinho</a>
                 
 
                 
